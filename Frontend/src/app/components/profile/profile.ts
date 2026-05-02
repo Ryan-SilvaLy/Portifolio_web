@@ -1,7 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Skills } from '../skills/skills';
-import { SocialLinks } from '../social-links/social-links';
 
 interface Project {
   id: number;
@@ -12,9 +10,22 @@ interface Project {
   image: string;
 }
 
+interface Skill {
+  name: string;
+  icon: string;
+  category: 'frontend' | 'backend' | 'tools';
+}
+
+interface SocialLink {
+  name: string;
+  icon: string;
+  url: string;
+  color: string;
+}
+
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, Skills, SocialLinks],
+  imports: [CommonModule],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })
@@ -67,6 +78,60 @@ export class Profile {
 
   currentIndex = signal(0);
 
+  // Skills
+  skills = signal<Skill[]>([
+    // Frontend
+    { name: 'Angular', icon: 'devicon-angular-plain colored', category: 'frontend' },
+    { name: 'TypeScript', icon: 'devicon-typescript-plain colored', category: 'frontend' },
+    { name: 'HTML5', icon: 'devicon-html5-plain colored', category: 'frontend' },
+    { name: 'CSS3', icon: 'devicon-css3-plain colored', category: 'frontend' },
+    { name: 'SCSS', icon: 'devicon-sass-original colored', category: 'frontend' },
+    { name: 'React', icon: 'devicon-react-plain colored', category: 'frontend' },
+
+    // Backend
+    { name: 'Node.js', icon: 'devicon-nodejs-plain colored', category: 'backend' },
+    { name: 'Express', icon: 'devicon-express-original colored', category: 'backend' },
+    { name: 'MongoDB', icon: 'devicon-mongodb-plain colored', category: 'backend' },
+    { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored', category: 'backend' },
+    { name: 'MySQL', icon: 'devicon-mysql-plain colored', category: 'backend' },
+    { name: 'Firebase', icon: 'devicon-firebase-plain colored', category: 'backend' },
+
+    // Tools
+    { name: 'Git', icon: 'devicon-git-plain colored', category: 'tools' },
+    { name: 'GitHub', icon: 'devicon-github-original colored', category: 'tools' },
+    { name: 'VS Code', icon: 'devicon-vscode-plain colored', category: 'tools' },
+    { name: 'Docker', icon: 'devicon-docker-plain colored', category: 'tools' },
+  ]);
+
+  // Social Links
+  socialLinks = signal<SocialLink[]>([
+    {
+      name: 'GitHub',
+      icon: 'bi bi-github',
+      url: 'https://github.com/ryansilva',
+      color: '#333',
+    },
+    {
+      name: 'LinkedIn',
+      icon: 'bi bi-linkedin',
+      url: 'https://linkedin.com/in/ryansilva',
+      color: '#0A66C2',
+    },
+    {
+      name: 'Twitter',
+      icon: 'bi bi-twitter-x',
+      url: 'https://twitter.com/ryansilva',
+      color: '#000',
+    },
+    {
+      name: 'Email',
+      icon: 'bi bi-envelope',
+      url: 'mailto:ryan@example.com',
+      color: '#EA4335',
+    },
+  ]);
+
+  // Métodos do carrossel
   nextProject() {
     this.currentIndex.set((this.currentIndex() + 1) % this.projects().length);
   }
@@ -79,5 +144,18 @@ export class Profile {
 
   get currentProject(): Project {
     return this.projects()[this.currentIndex()];
+  }
+
+  // Getters para skills por categoria
+  get frontendSkills() {
+    return this.skills().filter((s) => s.category === 'frontend');
+  }
+
+  get backendSkills() {
+    return this.skills().filter((s) => s.category === 'backend');
+  }
+
+  get toolsSkills() {
+    return this.skills().filter((s) => s.category === 'tools');
   }
 }

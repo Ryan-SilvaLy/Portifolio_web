@@ -26,6 +26,45 @@
     </div>
   </section>
 
+  <!-- Skills Grid -->
+  <section class="skills-section">
+    <h2 class="skills-title">Tecnologias</h2>
+    <div class="skills-grid">
+      <!-- Frontend -->
+      <div class="skills-category">
+        <h3 class="category-title">Frontend</h3>
+        <div class="skills-list">
+          <div *ngFor="let skill of frontendSkills" class="skill-card">
+            <i [class]="skill.icon" class="skill-icon"></i>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="skills-category">
+        <h3 class="category-title">Backend</h3>
+        <div class="skills-list">
+          <div *ngFor="let skill of backendSkills" class="skill-card">
+            <i [class]="skill.icon" class="skill-icon"></i>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="skills-category">
+        <h3 class="category-title">Tools & DevOps</h3>
+        <div class="skills-list">
+          <div *ngFor="let skill of toolsSkills" class="skill-card">
+            <i [class]="skill.icon" class="skill-icon"></i>
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section (Carrossel) -->
   <section class="projects-section">
     <h2>Meus Projetos</h2>
@@ -68,13 +107,22 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section class="skills-section">
-    <app-skills></app-skills>
-  </section>
-
   <!-- Social Links Section -->
   <section class="social-section">
-    <app-social-links></app-social-links>
+    <div class="social-links-container">
+      <div class="social-links">
+        <a
+          *ngFor="let link of socialLinks()"
+          [href]="link.url"
+          [title]="link.name"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          [style.--link-color]="link.color"
+        >
+          <i [class]="link.icon"></i>
+        </a>
+      </div>
+    </div>
   </section>
 </div>
