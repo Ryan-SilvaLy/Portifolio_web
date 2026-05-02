@@ -1,1 +1,80 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="profile-image-wrapper">
+      <img [src]="profileImage()" [alt]="name()" class="profile-image" />
+    </div>
+    <div class="profile-content">
+      <h1 class="profile-name">{{ name() }}</h1>
+      <h2 class="profile-title">{{ title() }}</h2>
+      <p class="profile-description">{{ description() }}</p>
+    </div>
+  </div>
+
+  <!-- About Sections -->
+  <section class="about-section">
+    <div class="about-content">
+      <h2 class="about-title">{{ presentation().title }}</h2>
+      <p class="about-text">{{ presentation().content }}</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="about-content">
+      <h2 class="about-title">{{ skills_content().title }}</h2>
+      <p class="about-text">{{ skills_content().content }}</p>
+    </div>
+  </section>
+
+  <!-- Projects Section (Carrossel) -->
+  <section class="projects-section">
+    <h2>Meus Projetos</h2>
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev-btn" (click)="prevProject()" aria-label="Projeto anterior">
+          ❮
+        </button>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img [src]="currentProject.image" [alt]="currentProject.title" />
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">{{ currentProject.title }}</h3>
+            <p class="project-description">{{ currentProject.description }}</p>
+            <div class="project-technologies">
+              <span *ngFor="let tech of currentProject.technologies" class="tech-badge">
+                {{ tech }}
+              </span>
+            </div>
+            <a [href]="currentProject.link" class="project-link">Ver Projeto →</a>
+          </div>
+        </div>
+
+        <button class="carousel-btn next-btn" (click)="nextProject()" aria-label="Próximo projeto">
+          ❯
+        </button>
+      </div>
+
+      <div class="carousel-indicators">
+        <span
+          *ngFor="let i of [0, 1, 2]"
+          class="indicator"
+          [class.active]="i === currentIndex()"
+          (click)="currentIndex.set(i)"
+          [attr.aria-label]="'Ir para projeto ' + (i + 1)"
+        ></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <app-skills></app-skills>
+  </section>
+
+  <!-- Social Links Section -->
+  <section class="social-section">
+    <app-social-links></app-social-links>
+  </section>
+</div>

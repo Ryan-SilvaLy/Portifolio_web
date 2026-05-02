@@ -1,1 +1,1 @@
-<p>social-links works!</p>
+<div class=\"social-links-container\">\n  <div class=\"social-links\">\n    <a\n      *ngFor=\"let link of socialLinks()\"\n      [href]=\"link.url\"\n      [title]=\"link.name\"\n      target=\"_blank\"\n      rel=\"noopener noreferrer\"\n      class=\"social-link\"\n      [style.--link-color]=\"link.color\"\n    >\n      <i [class]=\"link.icon\"></i>\n    </a>\n  </div>\n</div>

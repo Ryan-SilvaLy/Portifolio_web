@@ -1,59 +1,84 @@
-# PortfolioRyan
+# Portfólio Angular - Dev Ryan Silva
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Aplicação frontend em Angular com **uma única página**, moderna, responsiva e fácil de editar.
 
-## Development server
-
-To start a local development server, run:
+## 1) Comandos para criar o projeto Angular
 
 ```bash
-ng serve
+# 1. Criar projeto standalone com SCSS e roteamento
+npm create @angular@latest portfolio-ryan -- --style=scss --routing --ssr --standalone
+
+# 2. Entrar na pasta
+cd portfolio-ryan
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 2) Bibliotecas npm usadas (ícones)
 
 ```bash
-ng generate component component-name
+npm install bootstrap-icons devicon
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+> O carrossel foi feito de forma nativa no Angular (sem biblioteca externa), para manter o projeto simples.
+
+## 3) Estrutura principal de pastas
+
+```txt
+src/
+├─ app/
+│  ├─ app.ts
+│  ├─ app.html
+│  ├─ app.scss
+│  └─ components/
+│     ├─ profile/
+│     │  ├─ profile.ts
+│     │  ├─ profile.html
+│     │  └─ profile.scss
+│     ├─ projects-carousel/
+│     │  ├─ projects-carousel.ts
+│     │  ├─ projects-carousel.html
+│     │  └─ projects-carousel.scss
+│     ├─ skills/
+│     │  ├─ skills.ts
+│     │  ├─ skills.html
+│     │  └─ skills.scss
+│     └─ social-links/
+│        ├─ social-links.ts
+│        ├─ social-links.html
+│        └─ social-links.scss
+├─ styles.scss
+└─ main.ts
+```
+
+## 4) Componentes Angular recomendados
+
+- `Profile`: foto, nome e textos de apresentação.
+- `ProjectsCarousel`: card de projetos com navegação anterior/próximo.
+- `Skills`: grid com tecnologias e ícones.
+- `SocialLinks`: botões de redes sociais clicáveis.
+
+## 5) Arquivos principais
+
+Os arquivos principais estão implementados em:
+
+- `src/app/app.ts`
+- `src/app/app.html`
+- `src/app/app.scss`
+- `src/app/components/**`
+- `src/styles.scss`
+
+## 6) Layout SCSS
+
+- SCSS organizado por componente.
+- Estilo global em `styles.scss` (reset, fonte e import de ícones).
+- Layout com gradiente, cards e responsividade com media query.
+
+## 7) Comentários no código
+
+Foram adicionados comentários em pontos-chave dos arquivos TypeScript e SCSS para facilitar manutenção futura.
+
+## Rodando o projeto
 
 ```bash
-ng generate --help
+npm install
+npm start
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
