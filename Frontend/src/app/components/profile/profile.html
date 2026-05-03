@@ -2,7 +2,7 @@
   <!-- HEADER -->
   <div class="profile-header">
     <div class="profile-image-wrapper">
-      <img src="img/perfil.png" alt="Ryan Silva" class="profile-image" />
+      <img src="img/Perfil.jpg" alt="Ryan Silva" class="profile-image" />
     </div>
 
     <div class="profile-content">
@@ -10,15 +10,29 @@
       <h2 class="profile-title">Full Stack Developer</h2>
 
       <p class="profile-description">
-        Desenvolvedor Full Stack Júnior com experiência prática em sistemas web
-        completos, da interface ao backend e banco de dados.
+        Desenvolvedor Full Stack Júnior com experiência em sistemas web completos.
       </p>
+
+      <div class="contact-info">
+        <a href="mailto:ryan.ly777skrr@gmail.com" class="contact-item">
+          <i class="bi bi-envelope"></i>
+          <span>ryan.ly777skrr@gmail.com</span>
+        </a>
+        <a href="tel:+5521970791997" class="contact-item">
+          <i class="bi bi-telephone"></i>
+          <span>(21) 97079-1997</span>
+        </a>
+        <div class="contact-item">
+          <i class="bi bi-geo-alt"></i>
+          <span>Benfica - RJ</span>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- SOBRE -->
   <section class="about-section">
-    <h2 class="about-title">🧑‍💻 Apresentação</h2>
+    <h2 class="about-title">💻 Quem sou</h2>
 
     <p class="about-text">
       Olá, sou Ryan Silva, tenho 22 anos e sou natural do Maranhão.
@@ -28,7 +42,7 @@
   </section>
 
   <section class="about-section">
-    <h2 class="about-title">🚀 Habilidades</h2>
+    <h2 class="about-title">✔ Experiências</h2>
 
     <p class="about-text">
       Experiência com Angular, Django, Node.js, APIs REST e bancos de dados como
@@ -145,40 +159,121 @@
     </div>
   </section>
 
-  <!-- PROJETOS -->
-  <section class="projects-section">
-    <h2>Projetos</h2>
+ <!-- PROJETOS - ESTOQUE -->
+  <div>
+    <h3 class="category-title" class="projects-section">Projetos em produção</h3>
+  </div>
 
-    <div class="carousel-container">
-      <button (click)="prevProject()">❮</button>
+<section class="projects-section">
+  <h4>Sistema de Controle de Estoque</h4>
+   <p>
+    Sistema desenvolvido para resolver falhas no fluxo de estoque do almoxarifado,
+    onde o ERP não atendia às necessidades operacionais.
+  </p>
 
-      <div *ngIf="currentIndex() === 0" class="project-card">
-        <h3>Portfólio Angular</h3>
-        <p>Site responsivo com Angular.</p>
-      </div>
-
-      <div *ngIf="currentIndex() === 1" class="project-card">
-        <h3>Dashboard</h3>
-        <p>Painel administrativo completo.</p>
-      </div>
-
-      <div *ngIf="currentIndex() === 2" class="project-card">
-        <h3>E-commerce</h3>
-        <p>Sistema de vendas online.</p>
-      </div>
-
-      <button (click)="nextProject()">❯</button>
+  <div class="carousel slide">
+    <div class="carousel-indicators">
+      <button
+        *ngFor="let project of estoqueProjects; let i = index"
+        type="button"
+        [class.active]="i === estoqueIndex()"
+        (click)="goToEstoque(i)"
+        [attr.aria-current]="i === estoqueIndex() ? 'true' : 'false'"
+        [attr.aria-label]="'Slide ' + (i + 1)"
+      ></button>
     </div>
-  </section>
+
+    <div class="carousel-inner">
+      <div
+        *ngFor="let project of estoqueProjects; let i = index"
+        class="carousel-item"
+        [class.active]="i === estoqueIndex()"
+      >
+        <img [src]="project.image" class="d-block w-100" [alt]="project.title" />
+
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ project.title }}</h5>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" (click)="prevEstoque()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" (click)="nextEstoque()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
+<!-- PROJETOS - ROTAS E NOTAS -->
+<section class="projects-section">
+  <h4>Sistema de rotas e lançamento de notas</h4>
+  <p>
+    Sistema desenvolvido para otimizar o processo de criação de rotas e lançamento de notas fiscais,
+    melhorando a eficiência operacional e reduzindo erros no controle de documentos.
+  </p>
+
+  <div class="carousel slide">
+    <div class="carousel-indicators">
+      <button
+        *ngFor="let project of rotasProjects; let i = index"
+        type="button"
+        [class.active]="i === rotasIndex()"
+        (click)="goToRotas(i)"
+        [attr.aria-current]="i === rotasIndex() ? 'true' : 'false'"
+        [attr.aria-label]="'Slide ' + (i + 1)"
+      ></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div
+        *ngFor="let project of rotasProjects; let i = index"
+        class="carousel-item"
+        [class.active]="i === rotasIndex()"
+      >
+        <img [src]="project.image" class="d-block w-100" [alt]="project.title" />
+
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ project.title }}</h5>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" (click)="prevRotas()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" (click)="nextRotas()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
 
   <!-- SOCIAL -->
-  <section class="social-section">
-    <a href="https://github.com" target="_blank">
-      <i class="bi bi-github"></i>
-    </a>
+<section class="social-section">
+  
+  <a href="https://github.com/Ryan-SilvaLy" target="_blank" class="github">
+    <i class="bi bi-github"></i>
+  </a>
 
-    <a href="https://linkedin.com" target="_blank">
-      <i class="bi bi-linkedin"></i>
-    </a>
-  </section>
+  <a href="https://www.linkedin.com/in/ryan-silva-ly/" target="_blank" class="linkedin">
+    <i class="bi bi-linkedin"></i>
+  </a>
+
+  <a href="https://www.instagram.com/r.silvaa_ly/" target="_blank" class="instagram">
+    <i class="bi bi-instagram"></i>
+  </a>
+
+</section>
 </div>

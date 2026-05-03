@@ -42,6 +42,38 @@
   color: #e5e7eb;
 }
 
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(4px);
+}
+
+.contact-item i {
+  font-size: 18px;
+  color: #60a5fa;
+}
+
 .about-section,
 .skills-section,
 .projects-section,
@@ -52,7 +84,7 @@
 .about-section,
 .skills-category,
 .project-card {
-  background: rgba(17, 17, 17, 0.72);
+  background: rgba(17, 17, 17, 0.356);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
   padding: 20px;
@@ -83,7 +115,7 @@
   gap: 10px;
   padding: 10px 14px;
   border-radius: 10px;
-  background: #111;
+  background: #1111116c;
   transition: 0.2s ease;
 }
 
@@ -100,71 +132,7 @@
   font-size: 14px;
 }
 
-.carousel-container {
-  width: 100%;
-}
 
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.carousel-btn,
-.carousel-container > button {
-  min-width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  background: #111;
-  color: #fff;
-  font-size: 20px;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-.project-image img {
-  width: 100%;
-  border-radius: 16px;
-}
-
-.project-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tech-badge {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  font-size: 13px;
-}
-
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #6b7280;
-  cursor: pointer;
-}
-
-.indicator.active {
-  background: #fff;
-}
 
 .social-section {
   display: flex;
@@ -188,6 +156,20 @@
   color: #fff;
   font-size: 22px;
   text-decoration: none;
+}
+
+.social-section a.github i {
+  color: #fff;
+}
+
+.social-section a.linkedin i {
+  color: #0a66c2;
+}
+
+.social-section a.instagram i {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Tablet */
